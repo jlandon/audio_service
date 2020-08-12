@@ -148,12 +148,12 @@ static MPMediaItemArtwork* artwork = nil;
     if (fastForwardInterval.integerValue > 0) {
       [commandCenter.skipForwardCommand setEnabled:YES];
       [commandCenter.skipForwardCommand addTarget: self action:@selector(skipForward:)];
-      commandCenter.skipForwardCommand.preferredIntervals = @[fastForwardInterval];
+      commandCenter.skipForwardCommand.preferredIntervals = @[[NSNumber numberWithLongLong: fastForwardInterval.longLongValue / 1000.0]];
     }
     if (rewindInterval.integerValue > 0) {
       [commandCenter.skipBackwardCommand setEnabled:YES];
       [commandCenter.skipBackwardCommand addTarget: self action:@selector(skipBackward:)];
-      commandCenter.skipBackwardCommand.preferredIntervals = @[rewindInterval];
+      commandCenter.skipBackwardCommand.preferredIntervals = @[[NSNumber numberWithLongLong: rewindInterval.longLongValue / 1000.0]];
     }
     // Params
     params = [call.arguments objectForKey:@"params"];
